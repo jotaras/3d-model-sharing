@@ -1,0 +1,57 @@
+@import '../../StylesTemplates.scss';
+
+.confirm-container {
+    @extend %cover-page;
+
+    .confirm-window {
+        display: flex;
+        flex-direction: column;
+        width: 360px;
+        padding: 20px;
+        border-radius: $modal-border-radius;
+        background-color: rgb(255, 255, 255);
+
+        @media(max-width: 600px) {
+            width: 250px;
+        }
+
+        .confirm-message {
+            width: 100%;
+            display: block;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .action-buttons-container {
+            display: flex;
+            justify-content: space-between;
+            
+            .ok-button {
+                align-self: flex-start;
+                width: 60px;
+                padding: $content-padding;
+                background-color: rgba(17, 252, 17, 0.685);
+            }
+            
+            .cancel-button {
+                align-self: flex-end;
+                width: 60px;
+                padding: $content-padding;
+                background-color: rgba(238, 25, 25, 0.726);
+            }
+        }
+        
+
+        .close-confirm-modal-button {
+            width: 24px;
+            height: 24px;
+            align-self: flex-end;
+            margin-right: -20px;
+            margin-top: -20px;
+            padding: 0;
+            position: relative;
+            border: none;
+            background: transparent;
+        }
+    }
+}

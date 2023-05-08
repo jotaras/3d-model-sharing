@@ -1,0 +1,45 @@
+@import '../../StylesTemplates.scss';
+
+.messages-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    padding: $content-padding;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 20px;
+
+    .message-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(114, 98, 255);
+        width: 400px;
+        border: 1px black solid;
+        border-radius: $modal-border-radius;
+
+        @media(max-width: 600px) {
+            width: 280px;
+        }
+
+        .p-message {
+            word-break: break-all;
+            text-align: center;
+            padding: $content-padding;
+            color: white;
+            margin: 0;
+        }
+
+        .close-message-button {
+            height: 24px;
+            width: 24px;
+            position: absolute;
+            border: none;
+            background: transparent;
+            padding: 0;
+            align-self: flex-end;
+        }
+    }
+}

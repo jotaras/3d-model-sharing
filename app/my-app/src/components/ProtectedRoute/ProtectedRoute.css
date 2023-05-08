@@ -1,0 +1,21 @@
+.forbidden-container {
+    display: grid;
+    font-size: large;
+    position: relative; 
+    padding: 10%;
+    left: 0;
+    top: 60px;
+    width: 80%;
+}
+
+.lock-image {
+    width: 10em;
+    height: 10em;
+    margin: 0 auto;
+}
+
+.forbidden-message {
+    margin: 0 auto;
+    font-size: 1.5em;
+    text-align: center;
+}

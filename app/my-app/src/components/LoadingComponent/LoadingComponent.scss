@@ -1,0 +1,23 @@
+@import '../../StylesTemplates.scss';
+
+.loading-container {
+    @extend %cover-page;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: large;
+    gap: 20px;
+
+    .loading-bar {
+        border: 10px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 10px solid rgba(83, 117, 240, 0.699);
+        width: 160px;    
+        height: 160px;
+        animation: spin 5s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+}

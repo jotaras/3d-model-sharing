@@ -1,0 +1,52 @@
+.input-tag {
+    box-sizing: border-box;
+    font-size: 1em;
+    width: 90%;
+    height: 28px;
+}
+
+.input-tag-container {
+    position: absolute;
+    display: block;
+    width: 75%;
+}
+
+.autosuggest-container {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 150px;
+    border-collapse: collapse;
+    width: 90%;
+    z-index: 1;
+}
+
+.autosuggest-input {    
+    cursor: pointer;
+    font-size: 1em;
+    position: relative;
+    text-align: center;
+    padding: 3px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.add-tag-button {
+    position: relative;
+    border: 1px solid black;
+    left: 75%;
+    width: 25%;
+    height: 28px;
+}
+
+.autosuggest-wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.validation-tag-errors {
+    position: absolute;
+    color: red;
+    margin-top: 30px;
+}

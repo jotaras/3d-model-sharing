@@ -1,0 +1,54 @@
+@import '../../StylesTemplates.scss';
+
+.form-container {
+    @extend %cover-page;
+
+    .form {
+        @extend %form;
+
+        .form-name-input {
+            padding: $content-padding;
+        }
+
+        .form-description-textarea {
+            padding: $content-padding;
+            resize: none;
+            height: 60px;
+        }
+
+        .input-tag, .add-tag-button {
+            padding: $content-padding;
+            height: 40px;
+        }
+
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+
+            .tag-div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .remove-tag-button {
+                    display: flex;
+                    padding: 0;
+                    border: none;
+                    background: transparent;
+
+                    .remove-tag-img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+
+        }
+
+        #load-model-preview, #load-model-file {
+            display: none;
+        }
+    }
+}

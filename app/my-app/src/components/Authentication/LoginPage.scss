@@ -1,0 +1,20 @@
+@import '../../StylesTemplates.scss';
+
+
+.login-container {
+    width: 100%;   
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+    
+
+    .login-form {
+        @extend %form;
+        margin-top: 100px;
+        gap: 20px;
+
+        .login-input-fields {
+            padding: $content-padding;
+        } 
+    }
+}

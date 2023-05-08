@@ -1,0 +1,176 @@
+@import '../../StylesTemplates.scss';
+
+.add-tag-filter-button, .expand-model-button, .close-model-preview-button, .remove-filter-tag-button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    width: 24px;
+    height: 24px;
+}
+
+.model-history-tools {
+    @extend %table-tools;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .filter-tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+
+        .filter-tag-container {
+            height: 26px;
+            padding: 0 5px;
+            display: flex;
+            border: 1px solid black;
+            border-radius: 10px;
+            margin: 0 5px;
+            align-items: center;
+            justify-content: center;
+
+            .filter-tag-label {
+                height: 100%;
+                text-align: center;
+            }
+            
+            .remove-filter-tag-button {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .remove-filter-tag-image {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .add-tag-search-model-container {
+        width: 100%;
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+
+        .add-tag-filter-container {
+            display: flex;
+            align-items: center;
+            width: 200px;
+        }
+    }
+
+    .search-model-history {
+        @extend %search-input;
+
+        @media(max-width: 600px) {
+            margin-left: 0;
+        }
+    }
+}
+
+.model-history-table-container {
+    @extend %table-container;
+
+    .model-history-table {
+        @extend %responsive-table;
+
+
+        td, th {
+            position: relative;
+            border-bottom: 1px black dotted;
+            width: calc(25% - 1px);
+
+            &:nth-child(3) {
+                word-break: normal;
+            }
+
+            .expand-model-button {
+                position: absolute;
+                left: 6%;
+             }
+
+            .action-buttons {
+                @extend %action-buttons;
+                text-decoration: none;
+                color: blue;
+            }
+        }
+
+        .expanded-model-head, .expanded-model-body {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px black dashed;
+
+            @media(max-width: 768px) {
+                border: none;
+                border-right: 1px solid black;
+                display: flex;
+                flex-direction: column;
+            }
+
+            td, th {
+                border: none;
+                padding: $content-padding;
+                overflow: hidden;
+                position: relative;
+                height: 100%;
+                width: calc(37.5% - 1px);
+
+                &:last-child {
+                    width: 25%;
+                    border-right: 1px solid black;
+                }
+
+                @media(max-width: 768px) {
+                    width: 100%;
+                    padding: 5px;
+
+                    &:last-child {
+                        width: 100%;
+                        border-bottom: 1px black dashed;
+                    }
+                }
+            }
+
+            .last-update-label {
+                position: absolute;
+                padding: 0 1%;
+                left: 6%;
+                background-color: rgb(7, 255, 19);
+                border-radius: 5px;
+                color: white
+            }
+        }
+
+        .expanded-model-head {
+            @media(max-width: 768px) {
+               display: none;
+            } 
+        }
+    }
+}
+
+.moled-preview-container {
+    @extend %cover-page;
+    background-color: rgba(107, 107, 107, 0.39);
+
+    .model-preview-image {
+        object-fit: contain;
+        height: 60%;
+        width: 60%;
+        display: block;
+        margin: auto;
+    }
+
+    .close-model-preview-button {
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        top: 50px;
+        right: 0;
+
+        .close-model-preview-image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

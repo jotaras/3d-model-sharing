@@ -1,0 +1,86 @@
+@import '../../StylesTemplates.scss';
+
+.models-list-tools {
+    @extend %table-tools;
+
+    .create-new-model-button {
+        @extend %new-button;
+    }
+
+    .search-model-input {
+        @extend %search-input;
+    }
+}
+
+.models-table-container {
+    @extend %table-container;
+
+    .models-table {
+        @extend %responsive-table;
+
+        .model-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .action-buttons {
+            @extend %action-buttons;
+        }
+
+        td, th {
+            border-bottom: 1px black dotted;
+            &:nth-child(1) {
+                width: calc(10% - 1px);
+                @media (max-width: 768px) {
+                    width: calc(100% - $content-padding * 2);
+                }
+            }
+
+            &:nth-child(2) {
+                width: calc(15% - 1px);
+                @media (max-width: 768px) {
+                    width: calc(100% - $content-padding * 2);
+                }
+            }
+
+            &:nth-child(3) {
+                width: calc(20% - 1px);
+                @media (max-width: 768px) {
+                    width: calc(100% - $content-padding * 2);
+                }
+            }
+
+            &:nth-child(4) {
+                word-break: normal;
+                width: calc(20% - 1px);
+                @media (max-width: 768px) {
+                    width: calc(100% - $content-padding * 2);
+                }
+            }
+
+            &:nth-child(5) {
+                word-break: normal;
+                width: calc(25% - 1px);
+                @media (max-width: 768px) {
+                    width: calc(100% - $content-padding * 2);
+                }
+            }
+
+            &:nth-child(6) {
+                width: calc(10% - 1px);
+                @media (max-width: 768px) {
+                    width: calc(100% - $content-padding * 2);
+                }
+            }
+        }
+
+        td {
+            @media (max-width: 768px) {
+                &:first-child {
+                    height: 80px;
+                }
+            }
+        }
+    }
+}

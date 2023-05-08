@@ -1,0 +1,16 @@
+"C:\Program Files\Git\usr\bin\openssl.exe" req -x509 -nodes -new -sha256 -days 1024 -newkey rsa:2048 -keyout ca.key -out ca.pem -subj "/CN=Custom-CA"
+"C:\Program Files\Git\usr\bin\openssl.exe" x509 -outform pem -in ca.pem -out ca.crt
+
+"C:\Program Files\Git\usr\bin\openssl.exe" req -new -nodes -newkey rsa:2048 -keyout server_api.key -out server_api.csr -subj "/O=tboiko/CN=api"
+"C:\Program Files\Git\usr\bin\openssl.exe" x509 -req -sha256 -days 1024 -in server_api.csr -CA ca.pem -CAkey ca.key -CAcreateserial -extfile domains.ext -out server_api.crt
+
+"C:\Program Files\Git\usr\bin\openssl.exe" req -new -nodes -newkey rsa:2048 -keyout file_storage.key -out file_storage.csr -subj "/O=tboiko/CN=filestorage"
+"C:\Program Files\Git\usr\bin\openssl.exe" x509 -req -sha256 -days 1024 -in server_api.csr -CA ca.pem -CAkey ca.key -CAcreateserial -extfile domains.ext -out server_api.crt
+
+"C:\Program Files\Git\usr\bin\openssl.exe" req -new -nodes -days 2048 -newkey rsa:2048 -keyout certificate.key -out certificate.csr -subj "/O=tboiko/CN=localhost"
+"C:\Program Files\Git\usr\bin\openssl.exe" x509 -req -sha256 -days 1024 -in certificate.csr -CA ca.pem -CAkey ca.key -CAcreateserial -extfile domains.ext -out certificate.crt
+"C:\Program Files\Git\usr\bin\openssl.exe" pkcs12 -export -clcerts -in certificate.crt -inkey certificate.key -out certificate.p12
+
+
+keytool -import -alias localhost -keystore "C:\Program Files\Eclipse Adoptium\jdk-17.0.7.7-hotspot\lib\security\cacerts" -file "C:\Users\taras\ca.crt"
+keytool -delete -alias localhost -keystore "C:\Program Files\Eclipse Adoptium\jdk-17.0.7.7-hotspot\lib\security\cacerts" -file ca.crt

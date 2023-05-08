@@ -1,0 +1,96 @@
+version: "3.9"
+
+services:
+  file_server:
+      container_name: FileStorage
+      build: ./fileStorage
+      environment: 
+        - CERTIFICATE_P12=/certificates/certificate.p12
+        - CERTIFICATE_P12_PASSWORD=${CERTIFICATE_P12_PASSWORD}
+        - TRUST_STORE_PATH=/certificates/ca.crt
+        - FILE_STORAGE_PATH=/files/
+        - URL_SIGNING_SECRET=${URL_SIGNING_SECRET}
+        - MONGODB_LOCATION=file_db:27017/files
+      ports: 
+        - 3010:3010
+      depends_on: 
+        - file_db
+      volumes: 
+        - files_storage:/files/
+
+      secrets:
+        - source: cert-p12
+          target: /certificates/certificate.p12
+        - source: cert-ca
+          target: /certificates/ca.crt
+
+      networks:
+        - server_net
+
+  file_db:
+      container_name: FileStorage_db
+      ports: 
+        - 27018:27017
+      image: mongo:latest
+      volumes: 
+        - mongo_db:/data/db
+      networks:
+        - server_net
+
+  app_server:
+      container_name: Server
+      build: ./app/server
+      ports: 
+        - 8080:8080      
+      environment: 
+        - MYSQL_HOST=app_db
+        - SQL_DATABASE=${SQL_DATABASE}
+        - SQL_PASSWORD=${SQL_PASSWORD}
+        - SQL_USER_NAME=${SQL_USER_NAME}
+        - CERTIFICATE_P12=/certificates/certificate.p12
+        - CERTIFICATE_P12_PASSWORD=${CERTIFICATE_P12_PASSWORD}
+        - TRUST_STORE_PATH=/certificates/ca.crt
+        - JWT_SIGNING_SECRET=${JWT_SIGNING_SECRET}
+        - FILE_STORAGE_API_HOST=file_server:3010
+      
+      depends_on: 
+        - app_db
+
+      secrets:
+        - source: cert-p12
+          target: /certificates/certificate.p12
+        - source: cert-ca
+          target: /certificates/ca.crt
+      networks:
+        - server_net
+
+  app_db:
+      container_name: Server_db
+      image: mysql:latest
+      ports: 
+        - 3307:3306
+      volumes:
+        - sql_db:/var/lib/mysql
+      networks:
+        - server_net
+      environment:
+        - MYSQL_RANDOM_ROOT_PASSWORD=true
+        - MYSQL_USER=${SQL_USER_NAME}
+        - MYSQL_PASSWORD=${SQL_PASSWORD}
+        - MYSQL_DATABASE=${SQL_DATABASE}
+
+volumes:
+    mongo_db:
+
+    sql_db:
+
+    files_storage:
+
+secrets:         
+    cert-p12:
+      file: ${CERTIFICATE_P12}
+    cert-ca:
+      file: ${TRUST_STORE_PATH}
+  
+networks:
+    server_net: {}

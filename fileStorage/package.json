@@ -1,0 +1,32 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://git.amcbridge.com/research/web-java-educational-course-1-0/web-java-educational-course-1-0.git",
+  "author": "<tboiko@amcbridge.com>",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "client-certificate-auth-v2": "^0.3.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "js-guid": "^1.0.0",
+    "mongoose": "^6.0.5",
+    "simple-sign-url": "^2.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "babel-jest": "^27.2.4",
+    "eslint": "^7.32.0",
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.13"
+  },
+  "scripts": {
+    "start": "nodemon ./src/app.js --exec babel-node",
+    "test": "jest"
+  }
+}

@@ -1,0 +1,69 @@
+.page-container {
+    height: calc(100vh - 120px);
+    padding: 0 2%;
+
+    .model-description {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+
+        .go-back-button {
+            border: none;
+            background: transparent;
+            padding: 0;
+            width: 50px;
+
+            .go-back-image {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .model-description-header{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            align-items: center;
+            padding: 10px 0;
+            gap: 10px;
+        
+            .model-version-span {
+                display: flex;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .model-cutter-button {
+        position: absolute;
+        right: 2%;
+    }
+
+    .scene-options-menu {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        right: 2%;
+        user-select: none;
+
+        .add-plane-button, .cut-model-button, .delete-model-button {
+            color: white;
+            display: flex;
+            background: none;
+            border: 1px white solid;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 5px;
+            margin: 5px;
+        }
+    }
+
+    #scenne-canvas { 
+        width: 100%;
+        height: 100%;
+        
+        :focus {
+            outline:none;
+        }
+    }
+}
